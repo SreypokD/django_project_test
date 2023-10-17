@@ -1,3 +1,5 @@
+{% load  static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{% static  'img/IconImg.png' %}"/>
     <style>
         body {
             background-color: white;
         }
     </style>
-    <title>Document</title>
+    <title>bubushop</title>
 </head>
 <body>
     {% include 'accounts/navbar.html' %}
-    {% block content %}
-    {% endblock %}
 
-    <hr>
+    <div class="container mx-auto mt-4 h-screen">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
     {% include 'accounts/footer.html' %}
 </body>
 </html>
