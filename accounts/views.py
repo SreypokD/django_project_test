@@ -11,7 +11,7 @@ def dasboardPage(request):
     total_delivered = orders.filter(status = 'Delivered').count()
     total_pending = orders.filter(status = 'Pending').count()
     context = {
-        'cutomers': customers,
+        'customers': customers,
         'orders' : orders,
         'total_product' : total_product,
         'total_order' : total_order,
@@ -25,5 +25,13 @@ def productPage(request):
 
     return render(request, 'accounts/product.html', {'products' : products})
 
-def customerPage(request ):
-        return render(request, 'accounts/customer.html')
+def customerPage(request ,pk ):
+        customers = Customer.objects.get(id =pk)
+        orders = customers.order_set.all() #get order of cutomer 
+        total_order = orders.count()
+        context = {
+             'customers': customers,
+             'orders': orders,
+             'total_order' : total_order
+        }
+        return render(request, 'accounts/customer.html' , context)

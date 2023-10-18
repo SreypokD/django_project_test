@@ -1,5 +1,83 @@
 {% extends 'accounts/main.html' %}
+{% load static %}
 {% block content %}
+  <div class="grid grid-cols-2 ">
+    <div class="overflow-x-auto m-2 border-2  p-4">
+      <div class="avatar">
+        <div class="w-40 mask mask-squircle">
+          <img src="{% static 'img/profile.jpg' %}" />
+        </div>
+      </div>
+      <p class="font-bold text-xl ">Sreypok</p>
+      <p>phone:   {{  customers.phone}}</p>
+      <p>email: {{  customers.email}} </p>
+    </div>
+    <div class="overflow-x-auto m-2">
+      <table class="table bg-base-100">
+        <h5 class="font-bold text-gray-800 py-2">Customer information</h5>
+        <!-- head -->
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Favorite Color</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <th>1</th>
+            <td>Cy Ganderton</td>
+            <td>Quality Control Specialist</td>
+            <td>Blue</td>
+          </tr>
+          <!-- row 2 -->
+          <tr class="hover">
+            <th>2</th>
+            <td>Hart Hagerty</td>
+            <td>Desktop Support Technician</td>
+            <td>Purple</td>
+          </tr>
+          <!-- row 3 -->
+          <tr>
+            <th>3</th>
+            <td>Brice Swyre</td>
+            <td>Tax Accountant</td>
+            <td>Red</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="overflow-x-auto m-2">
+    <table class="table bg-base-100">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Date order</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ order.products }}</td>
+            <td>{{ order.products.category }}</td>
+            <td>{{ order.date_created }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+      
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-
-{% endblock content %}
+{% endblock %}

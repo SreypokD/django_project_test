@@ -1,6 +1,65 @@
 {% extends 'accounts/main.html' %}
-   {% block content %}
-   {% include 'accounts/status.html' %}
+{% block content %}
+  {% include 'accounts/status.html' %}
+  <div class="grid grid-cols-2 mt-8">
+    
+    <div class="me-4">
+      <h5 class="font-bold text-gray-800 bt-2">Customer</h5>
+      <table class="table bg-base-100">
+        <!-- head -->
+        <thead>
+         
+          <tr>
+            <th> Nº</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>More</th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for customer in customers %}
+          <tr class="hover">
+            <th>{{forloop.counter}}</th>
+            <td>{{customer.name}}</td>
+            <td>{{customer.phone}}</td>
+            <td>
+               <a href="{% url "customer" customer.id %}" class="text-red-500">Detail</a>
+             </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="ms-4">
+      <h5 class="font-bold text-gray-800">Last 5 orders</h5>
+      <table class="table bg-base-100">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>Product</th>
+            <th>Date Create</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for order in orders %}
+          <tr class="hover">
+            <th>{{forloop.counter}}</th>
+            <td>{{order.products}}</td>
+            <td>{{order.date_created}}</td>
+            <td>
+               <a href="">
 
-      
-   {% endblock %} 
+               </a>
+               <a href="">
+
+               </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
