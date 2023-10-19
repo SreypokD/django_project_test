@@ -1,0 +1,14 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+  <p>Are you sure to delete {{items}}</p>
+  <div class="contain-form  text-gray-900">
+    <form action="{% url "delete-order" items.id %}" method="POST" class="">
+      <div class="flex ml-80 p-4">
+        {% csrf_token %}
+
+      </div>
+      <a href="{% url "home" %}">Cancel</a>
+      <input type="submit" name="confirm" class="btn bg-blue-900 border-none ml-6 m-3" placeholder="save" />
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+  <h3 class="font-bold text-xl text-center mb-2" >Create order</h3>
+  <div class="contain-form  text-gray-900">
+    <form action="" method="POST" class="">
+      <div class="flex ml-80 p-4">
+        {% csrf_token %}
+        {{ form }}
+      </div>
+      <input type="submit" class="btn bg-blue-900 border-none ml-6 m-3" placeholder="save" />
+    </form>
+  </div>
+{% endblock %}
