@@ -8,17 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="{% static  'img/IconImg.png' %}"/>
-    <style>
-        body {
-            background-color: white;
-        }
-    </style>
     <title>bubushop</title>
 </head>
-<body>
+<body class="bg-gray-200">
     {% include 'accounts/navbar.html' %}
 
-    <div class="container mx-auto mt-4 h-screen">
+    <div class="container mx-auto mt-4 h-screen ">
         {% block content %}
         {% endblock content %}
     </div>

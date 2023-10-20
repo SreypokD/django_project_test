@@ -1,0 +1,29 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+  <div class="ext-center mb-2 flex align-center justify-center">
+    <p class="text-gray-900 text-lg">Add place Order for:</p>
+    <p class="font-bold text-xl text-red-500 ml-2">{{ customer.name }}</p>
+  </div>
+  <div class="contain-form text-gray-900">
+    <form action="" method="POST" class="flex align-center justify-center bg-neutral-500">
+      <div class="flex">
+        {% csrf_token %}
+        {{ formset.management_form }} {% comment %}to send multyple field{% endcomment %}
+        <div class="p-6">
+          {% for form in formset %}
+            {{ form }}
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+            <hr class="bg-neutral-500" />
+          {% endfor %}
+          <input type="submit" class="btn bg-blue-900 border-none ml-6 m-3 ms-90" placeholder="save" />
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

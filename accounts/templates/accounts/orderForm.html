@@ -2,10 +2,13 @@
 {% block content %}
   <h3 class="font-bold text-xl text-center mb-2" >Create order</h3>
   <div class="contain-form  text-gray-900">
-    <form action="" method="POST" class="">
-      <div class="flex ml-80 p-4">
+    <form action="" method="POST" class="flex align-center justify-center bg-neutral-500">
+      <div class="flex">
         {% csrf_token %}
-        {{ form }}
+        <div class="flex align-center justify-evenly p-6" >
+            {{ form }}
+        </div>
+        
       </div>
       <input type="submit" class="btn bg-blue-900 border-none ml-6 m-3" placeholder="save" />
     </form>

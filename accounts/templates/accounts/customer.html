@@ -1,55 +1,40 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
-  <div class="grid grid-cols-2 ">
-    <div class="overflow-x-auto m-2 border-2  p-4">
+  <div class="grid grid-cols-2">
+    <div class="overflow-x-auto flex algin-center justify-start m-2 border-2 rounded-xl bg-base-100 p-3">
       <div class="avatar">
         <div class="w-40 mask mask-squircle">
           <img src="{% static 'img/profile.jpg' %}" />
         </div>
       </div>
-      <p class="font-bold text-xl ">Sreypok</p>
-      <p>phone:   {{  customers.phone}}</p>
-      <p>email: {{  customers.email}} </p>
+      <div class="m-8">
+        <p class="font-bold text-xl">{{ customers.name }}</p>
+        <p>phone: {{ customers.phone }}</p>
+        <p>email: {{ customers.email }}</p>
+      </div>
     </div>
-    <div class="overflow-x-auto m-2">
-      <table class="table bg-base-100">
-        <h5 class="font-bold text-gray-800 py-2">Customer information</h5>
-        <!-- head -->
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- row 1 -->
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <!-- row 2 -->
-          <tr class="hover">
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="overflow-x-auto grid grid-cols-2 gap-4 m-2 bg-base-100 rounded-xl p-3">
+      <div class="button">
+        <h5 class="font-bold text-gray-200 text-center p-2">Customer information</h5>
+        <button class="btn w-80 mt-3 p-4 text-gray-900 border border-gray-300 rounded-lg bg-blue-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">Customer Update</button>
+        <a href="{% url 'place-order' customers.id %}"><button class="btn w-80 mt-3 p-4 text-gray-900 border border-gray-300 rounded-lg bg-blue-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">Place order</button></a>
+      </div>
+      <div class="total">
+        <h5 class="font-bold text-gray-200 text-center p-2">Total order</h5>
+        <h5 class="font-bold text-gray-200 text-center p-2 mt-8 text-2xl text-red-500">{{ total_order }}</h5>
+      </div>
     </div>
   </div>
+  {% comment %}search form{% endcomment %}
+
+  {% comment %} <form class="bg-base-100" method="get">
+    {{myfilter}}
+    <div>  
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+  </form> {% endcomment %}
+
   <div class="overflow-x-auto m-2">
     <table class="table bg-base-100">
       <!-- head -->
@@ -71,13 +56,10 @@
             <td>{{ order.products.category }}</td>
             <td>{{ order.date_created }}</td>
             <td>{{ order.status }}</td>
-            <td>
-              
-            </td>
+            <td></td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
- 
 {% endblock %}
