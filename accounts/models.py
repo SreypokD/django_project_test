@@ -7,6 +7,7 @@ class Customer(models.Model) :
     name  = models.CharField(max_length= 200 , null= True )#if not complete )
     phone = models.CharField(max_length=200 , null=True)
     email = models.CharField(max_length=200 , null=True)
+    profile_img = models.ImageField(default= 'default_img.jpg' , null=True , blank=True)
     date_created = models.DateTimeField(auto_now_add=True , null= True)
 
 # run command to create :  python manage.py makemigrations

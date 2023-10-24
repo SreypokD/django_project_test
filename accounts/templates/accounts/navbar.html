@@ -24,17 +24,21 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="{% static 'img/bubu.jpg' %}" />
+            {% if request.user.customer.profile_img %}
+              <img src="{{ request.user.customer.profile_img.url }}" />
+            {% else %}
+              <img src="{% static 'img/default_img.jpg' %}" />
+            {% endif %}
           </div>
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
           <li>
             <a class="justify-between">
-              Profile
-              <span class="badge">New</span>
+              View Profile
+              {% comment %} <span class="badge text-red-500">New</span> {% endcomment %}
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><a>Settings Profile </a></li>
           <li><a href="{% url "logout" %}">Logout</a></li>
         </ul>
       </div>

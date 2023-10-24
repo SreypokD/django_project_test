@@ -1,0 +1,29 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+  {% include 'accounts/status.html' %}
+  <div class="overflow-x-auto mt-5">
+    <table class="table bg-base-100">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Date order</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ order.products }}</td>
+            <td>{{ order.products.category }}</td>
+            <td>{{ order.date_created }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
